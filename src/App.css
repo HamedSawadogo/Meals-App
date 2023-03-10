@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+body {
+
+  background: rgba(244, 222, 229, 0.753);
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -32,6 +37,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
