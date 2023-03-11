@@ -1,13 +1,17 @@
 import './App.css';
 import Meals from './components/Meals';
-import Logo from './components/Logo';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Favorites from './pages/Favorites';
 
 function App() {
   return (
-    <div className="App">
-      <Logo />
-      <Meals />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Meals />} />
+        <Route path='/favorites' element={<Favorites />} />
+        <Route path='*' element={<Meals />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
