@@ -11,7 +11,7 @@
 }
 
 .meal:hover {
-  transform: scale(.9);
+  transform: scale(0.9);
   transition: 0.3s ease;
   cursor: pointer;
 }
@@ -42,7 +42,7 @@ input {
   transition: 0.3s ease;
 }
 
-button {
+.link {
   position: absolute;
   bottom: 0;
   display: block;
