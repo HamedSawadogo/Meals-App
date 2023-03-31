@@ -12,7 +12,7 @@ const Home = () => {
       <p>ajouter des livres a la liste de livres</p>
       <div>
         <Form books={books} setBooks={setBooks} />
-        {books.length > 0 ? (
+        {books && books.length > 0 ? (
           books?.map((book) => (
             <Book books={books} setBooks={setBooks} book={book} key={book.id} />
           ))

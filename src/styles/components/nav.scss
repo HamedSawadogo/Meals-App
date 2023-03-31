@@ -12,9 +12,18 @@ ul {
    align-items: center;
 }
 
+.nav {
+   color: rgb(239, 178, 198);
+}
+
 a {
    line-height: 60px;
    color: $color3;
    margin: 0px 10px;
    text-transform: uppercase;
+}
+
+.nav-active {
+   opacity: .8;
+   border-bottom: 2px solid #6327dc;
 }

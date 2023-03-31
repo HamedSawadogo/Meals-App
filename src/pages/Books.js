@@ -3,16 +3,22 @@ import React, { useEffect, useState } from "react";
 import BooksDetails from "../components/BooksDetails";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import { useDispatch } from "react-redux";
+import { addBook } from "../features/books.slice";
 
 const Books = () => {
   const [books, setBooks] = useState([]);
   const [book, setBook] = useState("hamed");
   const [loading, setLoading] = useState(true);
 
+  const dispatch = useDispatch();
+
+  console.log(books);
   useEffect(() => {
     axios
       .get(`https://www.googleapis.com/books/v1/volumes?q=${book}`)
       .then((res) => {
+        dispatch(addBook(res.data.items));
         setBooks(res.data.items);
         setLoading(false);
       });
