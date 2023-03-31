@@ -1,15 +1,15 @@
-import './App.css';
-import Meals from './components/Meals';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Favorites from './pages/Favorites';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
+import Books from "./pages/Books";
 
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
-        <Route path='/' element={<Meals />} />
-        <Route path='/favorites' element={<Favorites />} />
-        <Route path='*' element={<Meals />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/books" element={<Books />} />
       </Routes>
     </BrowserRouter>
   );

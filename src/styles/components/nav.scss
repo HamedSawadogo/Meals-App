@@ -1,0 +1,20 @@
+h2 {
+   color: $color3;
+}
+
+nav {
+   height: 60px;
+}
+
+ul {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+a {
+   line-height: 60px;
+   color: $color3;
+   margin: 0px 10px;
+   text-transform: uppercase;
+}
