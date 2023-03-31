@@ -2,10 +2,9 @@
 
 ![image](./redme/MealsApp.png)
 
-# react-router-dom
+# depedences react
 
-# axios
-
-# styled-components
-
-# redux @toolkit
+react-router-dom
+axios
+styled-components
+redux @toolkit
