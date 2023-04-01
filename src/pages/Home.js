@@ -1,21 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Form from "../components/Form";
 import Book from "../components/Book";
+import { useSelector } from "react-redux";
 
 const Home = () => {
-  const booksData = window.localStorage.getItem("books");
-  const [books, setBooks] = useState(booksData ? JSON.parse(booksData) : []);
+  const booksList = useSelector((state) => state.books);
+  console.log(booksList);
 
   return (
     <>
       <h3>Books App</h3>
       <p>ajouter des livres a la liste de livres</p>
       <div>
-        <Form books={books} setBooks={setBooks} />
-        {books && books.length > 0 ? (
-          books?.map((book) => (
-            <Book books={books} setBooks={setBooks} book={book} key={book.id} />
-          ))
+        <Form />
+        {booksList && booksList.length > 0 ? (
+          booksList?.map((book) => <Book book={book} key={book.id} />)
         ) : (
           <p>la liste des livre est vide</p>
         )}

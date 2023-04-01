@@ -1,13 +1,18 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addBook } from "../features/books.slice";
 
-const Form = ({ books, setBooks }) => {
-  function updateLocalStorage(booksData) {
-    window.localStorage.books = JSON.stringify(booksData);
-  }
+const Form = () => {
+  // state
+  const dispatch = useDispatch();
   const [book, setBook] = useState("");
   const [author, setAuthor] = useState("");
   const [error, setError] = useState("");
 
+  //action
+  function updateLocalStorage(booksData) {
+    window.localStorage.books.push(JSON.stringify(booksData));
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     if (author.length < 2 || book.length < 3) {
@@ -19,14 +24,15 @@ const Form = ({ books, setBooks }) => {
       author,
       book,
     };
-    setBooks([...books, bookAded]);
-    updateLocalStorage([...books, bookAded]);
+    dispatch(addBook(bookAded));
+    updateLocalStorage(bookAded);
     setBook("");
     setAuthor("");
     setError("");
     e.target.reset();
   };
 
+  //render
   return (
     <div className="container" onSubmit={(e) => handleSubmit(e)}>
       <form>

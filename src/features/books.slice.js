@@ -6,17 +6,20 @@ export const BooksReducer = createSlice({
     books: [],
   },
   reducers: {
+    setBooks: (state, { payload }) => {
+      state.books = payload;
+    },
     addBook: (state, { payload }) => {
       state.books.push(payload);
     },
     deleteBook: (state, { payload }) => {
-      state.books = state.books.filter((book) => book.id != payload);
+      state.books = state.books.filter((book) => book.id !== payload);
     },
     updateBook: (state, { payload }) => {
       state.books.map((book) => {
         if (book.id === payload) {
           return {
-            ...state,
+            ...book,
             books: payload,
           };
         } else {
@@ -28,4 +31,5 @@ export const BooksReducer = createSlice({
 });
 
 export default BooksReducer.reducer;
-export const { addBook, deleteBook, updateBook } = BooksReducer.actions;
+export const { addBook, deleteBook, updateBook, setBooks } =
+  BooksReducer.actions;

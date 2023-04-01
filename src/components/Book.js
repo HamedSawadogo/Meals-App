@@ -1,13 +1,12 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { deleteBook } from "../features/books.slice";
 
-const Book = ({ book, books, setBooks }) => {
-  function updateLocalStorage(books) {
-    window.localStorage.setItem("books", JSON.stringify(books));
-  }
+const Book = ({ book }) => {
+  const dispatch = useDispatch();
+
   const handleDelete = () => {
-    const newBooks = books.filter((_book) => _book.id !== book.id);
-    setBooks(newBooks);
-    updateLocalStorage(newBooks);
+    dispatch(deleteBook(book.id));
   };
   return (
     <div className="livres">

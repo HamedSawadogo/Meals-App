@@ -1,9 +1,24 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { addBook } from "../features/books.slice";
 
 const BooksDetails = ({ book }) => {
   const [isShowed, setShowed] = useState(false);
-  // const image = /;
+  const dispatch = useDispatch();
+
+  function updateLocalStorage(booksData) {
+    window.localStorage.books.push(JSON.stringify(booksData));
+  }
+  const handleAdd = () => {
+    const newBook = {
+      id: new Date().getTime(),
+      book: book.volumeInfo.title,
+      author: book.volumeInfo.authors[0],
+    };
+    dispatch(addBook(newBook));
+    updateLocalStorage(newBook);
+  };
 
   return (
     <div className="container" key={book.volumeInfo.title}>
@@ -21,6 +36,10 @@ const BooksDetails = ({ book }) => {
                 alt=""
               />
             )}
+            <h4>Auteur (s)</h4>
+            {book.volumeInfo.authors.map((ath) => (
+              <strong>{ath}</strong>
+            ))}
 
             <ul style={{ display: "flex" }}>
               <Link
@@ -30,7 +49,11 @@ const BooksDetails = ({ book }) => {
               >
                 en savoir plus
               </Link>
-              <button type="button" class="btn btn-secondary">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                onClick={() => handleAdd()}
+              >
                 Ajouter aux livres
               </button>
             </ul>
